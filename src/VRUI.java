@@ -118,13 +118,17 @@ public class VRUI {
 
 	public void rentVideo() {
 		String customerName = getUserInput("Enter customer name: ");
-
 		Customer foundCustomer = getCustomer(customerName);
-
 		if ( foundCustomer == null ) return ;
 
 		String videoTitle = getUserInput("Enter video title to rent: ");
+		Video foundVideo = getVideo(videoTitle);
+		if (foundVideo == null) return;
 
+		foundCustomer.rentVideo(foundVideo);
+	}
+
+	private Video getVideo(String videoTitle) {
 		Video foundVideo = null ;
 		for ( Video video: videos ) {
 			if ( video.getTitle().equals(videoTitle) && video.isRented() == false ) {
@@ -133,9 +137,7 @@ public class VRUI {
 			}
 		}
 
-		if ( foundVideo == null ) return ;
-
-		foundCustomer.rentVideo(foundVideo);
+		return foundVideo;
 	}
 
 	private String getUserInput(String s) {
@@ -145,8 +147,7 @@ public class VRUI {
 
 	public void registerCustomer() {
 		String name = getUserInput("Enter customer name: ");
-		Customer customer = new Customer(name) ;
-		customers.add(customer) ;
+		customers.add(new Customer(name)) ;
 	}
 
 	public void registerVideo() {
@@ -174,9 +175,8 @@ public class VRUI {
 		System.out.println("\t 7. Show customer report");
 		System.out.println("\t 8. Show customer and clear rentals");
 
-		int command = scanner.nextInt() ;
 
-		return command ;
+		return (scanner.nextInt()) ;
 
 	}
 }
