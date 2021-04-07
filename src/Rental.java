@@ -48,7 +48,7 @@ public class Rental {
 
 	public int getDaysRented() {
 		long diff;
-		if (getStatus() == 1) {
+		if (status == 1) {
 			diff = getReturnDate().getTime() - getRentDate().getTime();
 		} else {
 			diff = new Date().getTime() - getRentDate().getTime();
@@ -66,21 +66,19 @@ public class Rental {
 	}
 
 	public double getCharge() {
-		double charge = 0;
 		int daysRented = getDaysRented();
-		charge = getVideo().getCharge(daysRented);
-		return charge;
+		return getVideo().getCharge(daysRented);
 	}
 
 	public int getPoint() {
 		int point = 1;
 		int daysRented = getDaysRented();
 
-		if ((getVideo().getPriceCode() == Video.NEW_RELEASE) )
+		if ((video.getPriceCode() == Video.NEW_RELEASE) )
 			point++;
 
 		if ( daysRented > getDaysRentedLimit() )
-			point -= Math.min(point, getVideo().getLateReturnPointPenalty());
+			point -= Math.min(point, video.getLateReturnPointPenalty());
 		return point;
 	}
 
@@ -89,7 +87,7 @@ public class Rental {
 		int eachPoint = getPoint();
 		int daysRented = getDaysRented();;
 
-		String result = "\t" + getVideo().getTitle() + "\tDays rented: " + daysRented + "\tCharge: " + eachCharge
+		String result = "\t" + video.getTitle() + "\tDays rented: " + daysRented + "\tCharge: " + eachCharge
 				+ "\tPoint: " + eachPoint + "\n";
 		return result;
 	}
