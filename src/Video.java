@@ -20,11 +20,11 @@ public class Video {
 	private Date registeredDate ;
 	private boolean rented ;
 
-	public Video(String title, int videoType, int priceCode, Date registeredDate) {
+	public Video(String title, int videoType, int priceCode) {
 		this.setTitle(title) ;
 		this.setVideoType(videoType) ;
 		this.setPriceCode(priceCode) ;
-		this.registeredDate = registeredDate ;
+		this.registeredDate = new Date() ;
 	}
 
 	public int getLateReturnPointPenalty() {
