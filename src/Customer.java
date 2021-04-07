@@ -62,4 +62,40 @@ public class Customer {
 		}
 		return result ;
 	}
+
+	public void returnVideo(String videoTitle) {
+		for ( Rental rental: rentals ) {
+			if ( rental.getVideo().getTitle().equals(videoTitle) && rental.getVideo().isRented() ) {
+				rental.returnVideo();
+				rental.getVideo().setRented(false);
+				break ;
+			}
+		}
+	}
+	public void clearRentals() {
+		System.out.println("Name: " + getName() +
+				"\tRentals: " + rentals.size()) ;
+		for ( Rental rental: rentals ) {
+			System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ") ;
+			System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
+		}
+
+		List<Rental> rentals = new ArrayList<Rental>();
+		setRentals(rentals);
+	}
+
+	public void rentVideo(Video foundVideo) {
+		Rental rental = new Rental(foundVideo) ;
+		foundVideo.setRented(true);
+		rentals.add(rental);
+	}
+
+	public void listInformation() {
+		System.out.println("Name: " + getName() +
+				"\tRentals: " + rentals.size()) ;
+		for ( Rental rental: rentals ) {
+			System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ") ;
+			System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
+		}
+	}
 }
