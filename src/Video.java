@@ -2,6 +2,9 @@ import VideoType.CD;
 import VideoType.DVD;
 import VideoType.VHS;
 import VideoType.VideoType;
+import PriceCode.PriceCode;
+import PriceCode.Regular;
+import PriceCode.NewRelease;
 
 import java.util.Date;
 
@@ -13,6 +16,7 @@ public class Video {
 	public static final int NEW_RELEASE =2 ;
 
 	private VideoType type;
+	private PriceCode code;
 	public static final int VHS = 1 ;
 	public static final int CD = 2 ;
 	public static final int DVD = 3 ;
@@ -30,12 +34,21 @@ public class Video {
 	public int getLateReturnPointPenalty() {
 		return type.getLateReturnPointPenalty();
 	}
+
 	public int getPriceCode() {
 		return priceCode;
 	}
 
+	public double getPriceCode(int daysRented) {
+		return code.getPriceCode(daysRented);
+	}
+
 	public void setPriceCode(int priceCode) {
 		this.priceCode = priceCode;
+		switch(priceCode) {
+			case REGULAR: code = new Regular(); break;
+			case NEW_RELEASE: code = new NewRelease(); break;
+		}
 	}
 
 	public String getTitle() {

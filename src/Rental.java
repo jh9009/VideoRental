@@ -68,16 +68,7 @@ public class Rental {
 	public double getCharge() {
 		double charge = 0;
 		int daysRented = getDaysRented();
-		switch (getVideo().getPriceCode()) {
-			case Video.REGULAR:
-				charge += 2;
-				if (daysRented > 2)
-					charge += (daysRented - 2) * 1.5;
-				break;
-			case Video.NEW_RELEASE:
-				charge = daysRented * 3;
-				break;
-		}
+		charge = getVideo().getPriceCode(daysRented);
 		return charge;
 	}
 
