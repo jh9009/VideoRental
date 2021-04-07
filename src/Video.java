@@ -39,8 +39,8 @@ public class Video {
 		return priceCode;
 	}
 
-	public double getPriceCode(int daysRented) {
-		return code.getPriceCode(daysRented);
+	public double getCharge(int daysRented) {
+		return code.getCharge(daysRented);
 	}
 
 	public void setPriceCode(int priceCode) {

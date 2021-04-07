@@ -68,7 +68,7 @@ public class Rental {
 	public double getCharge() {
 		double charge = 0;
 		int daysRented = getDaysRented();
-		charge = getVideo().getPriceCode(daysRented);
+		charge = getVideo().getCharge(daysRented);
 		return charge;
 	}
 
