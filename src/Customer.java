@@ -35,7 +35,6 @@ public class Customer {
 	public String getReport() {
 		String result = "Customer Report for " + getName() + "\n";
 
-		List<Rental> rentals = getRentals();
 
 		double totalCharge = 0;
 		int totalPoint = 0;
