@@ -41,7 +41,8 @@ public class VRUI {
 		if ( foundCustomer == null ) {
 			System.out.println("No customer found") ;
 		} else {
-			System.out.println(foundCustomer.clearRentals());
+			System.out.println(foundCustomer.listInformation());
+			foundCustomer.clearRentals();
 		}
 	}
 

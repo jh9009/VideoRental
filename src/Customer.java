@@ -72,10 +72,8 @@ public class Customer {
 			}
 		}
 	}
-	public String clearRentals() {
-		String log = listInformation();
+	public void clearRentals() {
 		rentals = new ArrayList<Rental>();
-		return log;
 	}
 
 	public void rentVideo(Video foundVideo) {
