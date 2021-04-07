@@ -34,8 +34,7 @@ public class VRUI {
 	}
 
 	public void clearRentals() {
-		System.out.println("Enter customer name: ") ;
-		String customerName = scanner.next() ;
+		String customerName = getUserInput("Enter customer name: ");
 
 		Customer foundCustomer = getCustomer(customerName);
 
@@ -55,14 +54,12 @@ public class VRUI {
 	}
 
 	public void returnVideo() {
-		System.out.println("Enter customer name: ") ;
-		String customerName = scanner.next() ;
+		String customerName = getUserInput("Enter customer name: ");
 
 		Customer foundCustomer = getCustomer(customerName);
 		if ( foundCustomer == null ) return ;
 
-		System.out.println("Enter video title to return: ") ;
-		String videoTitle = scanner.next() ;
+		String videoTitle = getUserInput("Enter video title to return: ");
 
 		List<Rental> customerRentals = foundCustomer.getRentals() ;
 		for ( Rental rental: customerRentals ) {
@@ -126,8 +123,7 @@ public class VRUI {
 	}
 
 	public void getCustomerReport() {
-		System.out.println("Enter customer name: ") ;
-		String customerName = scanner.next() ;
+		String customerName = getUserInput("Enter customer name: ");
 
 		Customer foundCustomer = getCustomer(customerName);
 
@@ -140,15 +136,13 @@ public class VRUI {
 	}
 
 	public void rentVideo() {
-		System.out.println("Enter customer name: ") ;
-		String customerName = scanner.next() ;
+		String customerName = getUserInput("Enter customer name: ");
 
 		Customer foundCustomer = getCustomer(customerName);
 
 		if ( foundCustomer == null ) return ;
 
-		System.out.println("Enter video title to rent: ") ;
-		String videoTitle = scanner.next() ;
+		String videoTitle = getUserInput("Enter video title to rent: ");
 
 		Video foundVideo = null ;
 		for ( Video video: videos ) {
@@ -167,15 +161,20 @@ public class VRUI {
 		customerRentals.add(rental);
 		foundCustomer.setRentals(customerRentals);
 	}
+
+	private String getUserInput(String s) {
+		System.out.println(s);
+		return scanner.next();
+	}
+
 	public void registerCustomer() {
-		System.out.println("Enter customer name: ") ;
-		String name = scanner.next();
+		String name = getUserInput("Enter customer name: ");
 		Customer customer = new Customer(name) ;
 		customers.add(customer) ;
 	}
+
 	public void registerVideo() {
-		System.out.println("Enter video title to register: ") ;
-		String title = scanner.next() ;
+		String title = getUserInput("Enter video title to register: ");
 
 		System.out.println("Enter video type( 1 for VHD, 2 for CD, 3 for DVD ):") ;
 		int videoType = scanner.nextInt();
