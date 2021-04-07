@@ -42,16 +42,8 @@ public class Customer {
 
 		for (Rental each : rentals) {
 			double eachCharge = each.getCharge();
-			int eachPoint = 0 ;
-			int daysRented = each.getDaysRented();
-
-			eachPoint++;
-
-			if ((each.getVideo().getPriceCode() == Video.NEW_RELEASE) )
-				eachPoint++;
-
-			if ( daysRented > each.getDaysRentedLimit() )
-				eachPoint -= Math.min(eachPoint, each.getVideo().getLateReturnPointPenalty()) ;
+			int eachPoint = each.getPoint();
+			int daysRented = each.getDaysRented();;
 
 			result += "\t" + each.getVideo().getTitle() + "\tDays rented: " + daysRented + "\tCharge: " + eachCharge
 					+ "\tPoint: " + eachPoint + "\n";
