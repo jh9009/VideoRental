@@ -55,10 +55,10 @@ public class Customer {
 
 
 		if ( totalPoint >= 10 ) {
-			System.out.println("Congrat! You earned one free coupon");
+			result += "Congrat! You earned one free coupon";
 		}
 		if ( totalPoint >= 30 ) {
-			System.out.println("Congrat! You earned two free coupon");
+			result += "Congrat! You earned two free coupon";
 		}
 		return result ;
 	}
@@ -72,15 +72,10 @@ public class Customer {
 			}
 		}
 	}
-	public void clearRentals() {
-		System.out.println("Name: " + getName() +
-				"\tRentals: " + rentals.size()) ;
-		for ( Rental rental: rentals ) {
-			System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ") ;
-			System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
-		}
-
+	public String clearRentals() {
+		String log = listInformation();
 		rentals = new ArrayList<Rental>();
+		return log;
 	}
 
 	public void rentVideo(Video foundVideo) {
@@ -89,12 +84,13 @@ public class Customer {
 		rentals.add(rental);
 	}
 
-	public void listInformation() {
-		System.out.println("Name: " + getName() +
-				"\tRentals: " + rentals.size()) ;
+	public String listInformation() {
+		String log = "";
+		log += "Name: " + getName() + "\tRentals: " + rentals.size() ;
 		for ( Rental rental: rentals ) {
-			System.out.print("\tTitle: " + rental.getVideo().getTitle() + " ") ;
-			System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
+			log += "\tTitle: " + rental.getVideo().getTitle() + " " ;
+			log += "\tPrice Code: " + rental.getVideo().getPriceCode() ;
 		}
+		return log;
 	}
 }

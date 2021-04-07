@@ -41,7 +41,7 @@ public class VRUI {
 		if ( foundCustomer == null ) {
 			System.out.println("No customer found") ;
 		} else {
-			foundCustomer.clearRentals();
+			System.out.println(foundCustomer.clearRentals());
 		}
 	}
 
@@ -97,7 +97,7 @@ public class VRUI {
 	public void listCustomers() {
 		System.out.println("List of customers");
 		for ( Customer customer: customers ) {
-			customer.listInformation();
+			System.out.println(customer.listInformation());
 		}
 		System.out.println("End of list");
 	}
