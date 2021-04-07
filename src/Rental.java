@@ -96,4 +96,14 @@ public class Rental {
 			point -= Math.min(point, getVideo().getLateReturnPointPenalty());
 		return point;
 	}
+
+	public String getReport() {
+		double eachCharge = getCharge();
+		int eachPoint = getPoint();
+		int daysRented = getDaysRented();;
+
+		String result = "\t" + getVideo().getTitle() + "\tDays rented: " + daysRented + "\tCharge: " + eachCharge
+				+ "\tPoint: " + eachPoint + "\n";
+		return result;
+	}
 }
