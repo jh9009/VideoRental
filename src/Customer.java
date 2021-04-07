@@ -80,8 +80,7 @@ public class Customer {
 			System.out.print("\tPrice Code: " + rental.getVideo().getPriceCode()) ;
 		}
 
-		List<Rental> rentals = new ArrayList<Rental>();
-		setRentals(rentals);
+		rentals = new ArrayList<Rental>();
 	}
 
 	public void rentVideo(Video foundVideo) {
